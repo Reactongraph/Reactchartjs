@@ -1,0 +1,14 @@
+.App {
+  display: flex;
+  justify-content: center;
+
+}
+.chart{
+  width: 500px;
+}
+
+.title{
+  text-align: center;
+  padding: 5px;
+  margin-top: 45px;
+}
