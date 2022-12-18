@@ -2,6 +2,9 @@ import './App.css';
 import LineChart from './components/LineChart';
 import BarChart from './components/BarChart';
 import Multitype from './components/Multitype';
+import PieChart from './components/PieChart';
+import PolarChart from './components/PolarChart'
+import RadarChart from './components/RadarChart'
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
           <LineChart/>
           <BarChart/>
           <Multitype/>
+          <PieChart/>
+          <PolarChart/>
+          <RadarChart/>
       </div>
     </div>
   );
