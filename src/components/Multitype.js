@@ -1,46 +1,68 @@
-import React from 'react';
-import { Bar } from 'react-chartjs-2';
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import { HeaderTitle, ArrayofRandomData } from "../utils/Helper";
+import { labels, borderColor, backgroundColor } from "../utils/Constant";
 
-const rand = () => Math.round(Math.random() * 20 - 10);
+import {
+  Chart as ChartJS,
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+  LineController,
+  BarController,
+} from "chart.js";
+
+ChartJS.register(
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+  LineController,
+  BarController
+);
 
 const Multitype = () => {
-    const data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-                type: 'line',
-                label: 'Data set 1',
-                borderColor: 'black',
-                backgroundColor: 'black',
-                borderWidth: 2,
-                fill: false,
-                data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()]
-            },{
-                type: 'bar',
-                label: 'Data set 2',
-                borderColor: 'green',
-                backgroundColor: 'green',
-                // borderWidth: 2,
-                fill: false,
-                data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()]
-            },
-            {
-                type: 'bar',
-                label: 'Data set 3',
-                borderColor: 'red',
-                backgroundColor: 'red',
-                // borderWidth: 2,
-                data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()]
-            }
-
-        ]
-    }
-    return (
-        <div>
-            <h1 className='title'>Multitype Chart</h1>
-            <Bar data = { data }/>
-        </div>
-    );
+  const data = {
+    labels,
+    datasets: [
+      {
+        type: "line",
+        label: "Data set 1",
+        borderColor: borderColor[0],
+        backgroundColor: backgroundColor[0],
+        borderWidth: 2,
+        fill: false,
+        data: ArrayofRandomData(5),
+      },
+      {
+        type: "bar",
+        label: "Data set 2",
+        borderColor: borderColor[1],
+        backgroundColor: backgroundColor[1],
+        fill: false,
+        data: ArrayofRandomData(5),
+      },
+      {
+        type: "bar",
+        label: "Data set 3",
+        borderColor: borderColor[2],
+        backgroundColor: backgroundColor[2],
+        data: ArrayofRandomData(5),
+      },
+    ],
+  };
+  return (
+    <div className="chart">
+      <Bar data={data} options={HeaderTitle("Multitype Chart")} />
+    </div>
+  );
 };
 
 export default Multitype;

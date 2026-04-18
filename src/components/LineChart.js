@@ -1,57 +1,57 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import React from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { HeaderTitle } from "../utils/Helper";
+import { labels, backgroundColor } from "../utils/Constant";
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 const LineChart = () => {
-    const data = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-        datasets: [
-            {
-                label: 'Seles for 2020 (M)',
-                data: [ 3, 2, 2, 1, 5],
-                fill: true,
-                borderColor: ['rgba(255, 206, 86, 0.2)'],
-                backgroundColor: ['rgba(255, 206, 86, 0.2)'],
-                pointBackgroundColor: ['rgba(255, 206, 86, 0.2)'],
-                pointBorderColor: ['rgba(255, 206, 86, 0.2)']
-            },
-            {
-                label: 'Sales for 2019 (M)',
-                data: [1, 3, 3, 2, 1 ],
-                fill: true,
-                borderColor: ['rgba(24, 206, 83, 0.2)'],
-                backgroundColor: ['rgba(24, 206, 83, 0.2)'],
-                pointBackgroundColor: ['rgba(24, 206, 83, 0.2)'],
-                pointBorderColor: ['rgba(24, 206, 83, 0.2)']
-            },
-        ],
-    };
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Seles for 2020 (M)",
+        data: [3, 2, 2, 1, 5],
+        fill: true,
+        borderColor: [backgroundColor[3]],
+        backgroundColor: [backgroundColor[3]],
+        pointBackgroundColor: [backgroundColor[3]],
+        pointBorderColor: [backgroundColor[3]],
+      },
+      {
+        label: "Sales for 2019 (M)",
+        data: [1, 3, 3, 2, 1],
+        fill: true,
+        borderColor: [backgroundColor[4]],
+        backgroundColor: [backgroundColor[4]],
+        pointBackgroundColor: [backgroundColor[4]],
+        pointBorderColor: [backgroundColor[4]],
+      },
+    ],
+  };
 
-    const options = {
-        title: {
-            display: true,
-            text: 'Line Chart'
-        },
-        scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        min: 0,
-                        max: 6,
-                        stepSize: 1,
-                        beginAtZero: true,
-                    },
-                },
-            ],
-        },
-    };
-    return (
-        
-            <div>
-                <h1 className='title'>Line Chart</h1>
-                <Line data={data} options = {options} />
-            </div>
-        
-    );
+  return (
+    <div className="chart">
+      <Line data={data} options={HeaderTitle("Line Chart")} />
+    </div>
+  );
 };
 
 export default LineChart;
